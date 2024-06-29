@@ -3,11 +3,13 @@ from bl_operators.presets import AddPresetBase
 from bl_ui.utils import PresetPanel
 import bl_ui
 
+
 class VIEW3D_MT_dyntopo_preset(bpy.types.Menu):
     bl_label = "New Preset"
     preset_subdir = "dyntopo_preset"
     preset_operator = "script.execute_preset"
     draw = bpy.types.Menu.draw_preset
+
 
 class VIEW3D_OT_dyntopo_preset_add(AddPresetBase, bpy.types.Operator):
     bl_idname = "dyntopo_preset.add"
@@ -37,11 +39,12 @@ class VIEW3D_PT_dyntopo_preset(PresetPanel, bpy.types.Panel):
 classes = (
     VIEW3D_MT_dyntopo_preset,
     VIEW3D_OT_dyntopo_preset_add,
-    VIEW3D_PT_dyntopo_preset
+    VIEW3D_PT_dyntopo_preset,
 )
 
+
 def preset_menu(self, context):
-    #VIEW3D_PT_dyntopo_preset.draw_panel_header(self.layout)
+    # VIEW3D_PT_dyntopo_preset.draw_panel_header(self.layout)
 
     row = self.layout.row(align=True)
     row.menu(
@@ -52,6 +55,7 @@ def preset_menu(self, context):
     row.operator(
         VIEW3D_OT_dyntopo_preset_add.bl_idname, text="", icon="REMOVE"
     ).remove_active = True
+
 
 def register_classes():
     for cls in classes:
