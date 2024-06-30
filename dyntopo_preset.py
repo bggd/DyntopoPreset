@@ -1,9 +1,6 @@
 import bpy
 from bl_operators.presets import AddPresetBase
 
-# from bl_ui.utils import PresetPanel
-# import bl_ui
-
 
 class VIEW3D_MT_dyntopo_preset(bpy.types.Menu):
     bl_label = "New Preset"
@@ -30,23 +27,13 @@ class VIEW3D_OT_dyntopo_preset_add(AddPresetBase, bpy.types.Operator):
     preset_subdir = VIEW3D_MT_dyntopo_preset.preset_subdir
 
 
-# class VIEW3D_PT_dyntopo_preset(PresetPanel, bpy.types.Panel):
-#    bl_label = "Dyntopo Preset"
-#    preset_subdir = VIEW3D_MT_dyntopo_preset.preset_subdir
-#    preset_operator = "script.execute_preset"
-#    preset_add_operator = VIEW3D_OT_dyntopo_preset_add.bl_idname
-
-
 classes = (
     VIEW3D_MT_dyntopo_preset,
     VIEW3D_OT_dyntopo_preset_add,
-    # VIEW3D_PT_dyntopo_preset,
 )
 
 
 def preset_menu(self, context):
-    # VIEW3D_PT_dyntopo_preset.draw_panel_header(self.layout)
-
     row = self.layout.row(align=True)
     row.menu(
         VIEW3D_MT_dyntopo_preset.__name__,
