@@ -3,7 +3,7 @@ bl_info = {
     "author": "birthggd",
     "description": "preset for dyntopo",
     "blender": (4, 1, 0),
-    "version": (1, 0, 0),
+    "version": (1, 1, 0),
     "location": "",
     "warning": "",
     "category": "Interface",
