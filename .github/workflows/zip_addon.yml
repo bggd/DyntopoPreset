@@ -1,0 +1,22 @@
+name: Zip Addon
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  zip_b3d_addon:
+    name: Zip Blender Addon
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir DyntopoPreset
+      - run: mv *.py LICENSE DyntopoPreset
+      - run: zip DyntopoPreset-${{  github.ref_name  }}.zip -r DyntopoPreset
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: DyntopoPreset-${{  github.ref_name  }}.zip
